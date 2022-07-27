@@ -1,4 +1,3 @@
-absl
 absl-py
 astunparse==1.6.3
 cachetools==5.2.0
