@@ -7,12 +7,37 @@
     <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
   </head>
 
+  <style>
+      .row {
+    display: flex;
+  }
+
+  .column {
+    flex: 33.33%;
+    padding: 5px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  </style>
+
   <body>
-    <h1>Prediction: {{prediction_val}}</h1>
-    <img src="{{ url_for('static', filename=saved_filename) }}" alt="Original image">
-    <img src="{{ url_for('static', filename=gradcam_heatmap_1) }}" alt="GradCam image 1">
-    <img src="{{ url_for('static', filename=gradcam_heatmap_2) }}" alt="GradCam image 2">
-  
+    <h2>Prediction: {{prediction_val}}</h2>
+    <div class="row">
+      <div class="column">
+        <img src="{{ url_for('static', filename=saved_filename) }}" alt="Original image" >
+      </div>
+      <div class="column">
+        <img src="{{ url_for('static', filename=gradcam_heatmap_1) }}" alt="GradCam image 1" >
+      </div>
+      <div class="column">
+        <img src="{{ url_for('static', filename=gradcam_heatmap_2) }}" alt="GradCam image 2" >
+      </div>
+    </div>
+
+
     <!-- <input type="button" class="btn btn-lg btn-success" onclick="goToHome()" value="Home" /> -->
     <a href="/"> <h5 style="background-color:powderblue;"> Click to upload another xray</h5> </a>
 
