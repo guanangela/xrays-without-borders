@@ -114,12 +114,12 @@ def upload_file():
             grad_cam_path_1 = 'static/images/grad_cam_1.png'
             grad_cam_path_2 = 'static/images/grad_cam_2.png'
             pred_prob_1 = compute_gradcam(model, saved_filename, 'Cardiomegaly', grad_cam_path_1, layer_name='bn')
-            pred_prob_2 = compute_gradcam(model, saved_filename, 'No Finding', grad_cam_path_2, layer_name='bn')
+            # pred_prob_2 = compute_gradcam(model, saved_filename, 'No Finding', grad_cam_path_2, layer_name='bn')
             if pred_prob_1 > 0.5:
                 predicted_label = 'Cardiomegaly'
             else:
                 predicted_label = 'No Finding'
-            return render_template("result.html", prediction_val = predicted_label, saved_filename = 'images/' + filename, gradcam_heatmap_1 = 'images/grad_cam_1.png', gradcam_heatmap_2 = 'images/grad_cam_2.png')    
+            return render_template("result.html", prediction_val = predicted_label, saved_filename = 'images/' + filename, gradcam_heatmap_1 = 'images/grad_cam_1.png')#, gradcam_heatmap_2 = 'images/grad_cam_2.png')    
         return render_template('index.html')
 
 
