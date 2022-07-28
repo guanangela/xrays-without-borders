@@ -104,9 +104,9 @@ def upload_file():
             with open(saved_filename, 'rb') as f:
                 image_bytes = f.read()
             # img_bytes = file.read()
-            img = prepare_image(image_bytes)
+            # img = prepare_image(image_bytes)
             # return jsonify(prediction=predict_result(img))
-            prediction = predict_result(img)
+            # prediction = predict_result(img)
             # print('prediction->>>>>>>>>>>>>>>>>>>>>>>', prediction)
 
             # for i in range(len(labels)):
