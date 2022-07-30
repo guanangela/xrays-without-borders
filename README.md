@@ -31,4 +31,7 @@ Then go to http://127.0.0.1:5000/ in your browser.
   * `inference.py`: Contains helper functions for running machine learning inference
   * `requirements.txt`: Packages and dependencies required
   * `weights_model.h5`: Trained Model
+  * `Procfile`: File for Flask web app
+  * `Aptfile`: File for opencv-headless
+  * `templates`: Folder containing all html files for website
 
