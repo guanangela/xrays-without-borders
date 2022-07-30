@@ -27,7 +27,7 @@ flask run
 Then go to http://127.0.0.1:5000/ in your browser.
 
 ### Python Files:
-- Flask app: [app.py](https://github.com/guanangela/xrays-without-borders/blob/main/app.py)
+- Flask app: `[app.py]`(https://github.com/guanangela/xrays-without-borders/blob/main/app.py)
 - Functions for running machine learning inference: [inference.py](https://github.com/guanangela/xrays-without-borders/blob/main/inference.py)
 
 ### Other files:
