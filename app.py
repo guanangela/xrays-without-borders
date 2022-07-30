@@ -31,8 +31,26 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
            
-# Import our model
-model = tf.keras.models.load_model('weights_model.h5')
+# Import our model 
+from keras.utils.generic_utils import get_custom_objects
+from keras import backend as K
+def my_custom_func():
+    def get_weighted_loss(pos_weights, neg_weights, epsilon=1e-7):
+        def weighted_loss(y_true, y_pred):
+            # initialize loss to zero
+            loss = 0.0
+            for i in range(len(pos_weights)):
+                # print(tf.cast(y_pred, tf.float32))
+                y_true_var = tf.cast(y_true[:, i], tf.float32)
+                y_pred_var = tf.cast(y_pred[:, i], tf.float32)
+                loss_pos = -1 * K.mean(pos_weights[i] * y_true_var * K.log(y_pred_var + epsilon))
+                loss_neg = -1 * K.mean(neg_weights[i] * (1 - y_true_var) * K.log(1 - y_pred_var + epsilon))
+                loss += loss_pos + loss_neg
+            return loss
+        return weighted_loss
+get_custom_objects().update({'my_custom_func': my_custom_func})
+
+model = tf.keras.models.load_model('AJ_2_model.h5')
 
 # helper functions: image processing 
 def prepare_image(img):
@@ -41,9 +59,6 @@ def prepare_image(img):
     img = np.array(img)
     img = np.expand_dims(img, 0)
     return img
-
-# helper functions: gradCam from inference.py
-
 
 @app.route('/')
 def index():
