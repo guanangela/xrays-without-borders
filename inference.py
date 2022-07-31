@@ -16,12 +16,32 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')
 import cv2
+from keras import backend as K
 
 # imagenet_class_index = json.load(open('imagenet_class_index.json'))
 
 # Make sure to pass `pretrained` as `True` to use the pretrained weights:
 # model = models.resnet18(pretrained=True)
-model = tf.keras.models.load_model('weights_model.h5')
+# model = tf.keras.models.load_model('weights_model.h5')
+def weighted_loss(y_true, y_pred):
+    # initialize loss to zero
+    loss = 0.0
+    neg_weights = [0.4810219, 0.5189781]
+    pos_weights = [0.5189781, 0.4810219]
+    epsilon = 1e-7
+    for i in range(len(pos_weights)):
+        # print(tf.cast(y_pred, tf.float32))
+        y_true_var = tf.cast(y_true[:, i], tf.float32)
+        y_pred_var = tf.cast(y_pred[:, i], tf.float32)
+        loss_pos = -1 * K.mean(pos_weights[i] * y_true_var * K.log(y_pred_var + epsilon))
+        loss_neg = -1 * K.mean(neg_weights[i] * (1 - y_true_var) * K.log(1 - y_pred_var + epsilon))
+        loss += loss_pos + loss_neg
+    return loss
+    
+# Import our model 
+model = tf.keras.models.load_model('AJ_2_model.h5', custom_objects={'weighted_loss':                   
+weighted_loss})
+
 
 # Since we are using our model only for inference, switch to `eval` mode:
 # model.eval()

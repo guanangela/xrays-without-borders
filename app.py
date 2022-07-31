@@ -10,7 +10,6 @@ from werkzeug.utils import secure_filename
 from inference import *
 import matplotlib
 matplotlib.use('Agg')
-from keras.utils.generic_utils import get_custom_objects
 from keras import backend as K
 
 app = Flask(__name__)
