@@ -135,8 +135,12 @@ def upload_file():
 
             else:
                 predicted_label = 'No Finding'
+<<<<<<< HEAD
                 compute_gradcam(model, saved_filename, 'No Finding', grad_cam_path_2, layer_name='bn')
                 return render_template("result.html", prediction_val = predicted_label, saved_filename = 'images/' + filename, gradcam_heatmap_1 = 'images/grad_cam_2.png') #, gradcam_heatmap_2 = 'images/grad_cam_2.png')    
+=======
+            return render_template("result.html", prediction_val = predicted_label, saved_filename = 'images/' + filename, gradcam_heatmap_1 = 'images/grad_cam_1.png')#, gradcam_heatmap_2 = 'images/grad_cam_2.png')    
+>>>>>>> e1a9288d414a0c3fb0ebd78d49f466521c26dd1a
         return render_template('index.html')
 
 if __name__ == '__main__':
