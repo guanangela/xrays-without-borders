@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css"> 
 
-    <!-- CSS code for carousel -->
-    <style >  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-  }
-              
-  body {
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+            
+body {
       font-family: sans-serif;
       font-size: 16px;
       line-height: 1.5em;
@@ -25,71 +25,75 @@
       color: #aaa;
       background-color: #fbe3e8;
   }
-              
-  #container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-  }
-              
-  #carousel, #navigation {
-      flex: initial;
-      display: block;
-  }
-              
-  #carousel {
-      overflow: hidden;
-      width: 1000px;
-      height: 600px;
-      border-radius:3px;
-      background-color: #ebf6f5;
-  }
-              
-  .p-wrapper {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.4s ease-in-out;
-  }
-              
-  #button_a:checked ~ #carousel .p-wrapper {
-      -webkit-transform: translateY(0);
-      transform: translateY(0); 
-  }
-              
-  #button_b:checked ~ #carousel .p-wrapper {
-      -webkit-transform: translateY(-100%);
-      transform: translateY(-100%); 
-  }
-  
-  #button_c:checked ~ #carousel .p-wrapper {
-      -webkit-transform: translateY(-200%);
-      transform: translateY(-200%); 
-  }
-  
-  #button_d:checked ~ #carousel .p-wrapper {
-      -webkit-transform: translateY(-300%);
-      transform: translateY(-300%); 
-  }
-              
-  [class^="panel_"] {
-      overflow: auto;
-      position: relative;
-      width: inherit;
-      height: inherit;
-      padding: 48px;
-  }
-              
-  #navigation {
-      margin-left: 24px;
-  }
-  
-  [class^="label_"] {
+            
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+            
+#carousel, #navigation {
+    flex: initial;
+    display: block;
+}
+            
+#carousel {
+    overflow: hidden;
+    width: 600px;
+    height: 600px;
+    border-radius: 3px;
+    background-color: #ebf6f5;
+}
+            
+.p-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+            
+#button_a:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); 
+}
+            
+#button_b:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%); 
+}
+
+#button_c:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(-200%);
+    transform: translateY(-200%); 
+}
+
+#button_d:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(-300%);
+    transform: translateY(-300%); 
+}
+#button_e:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(-400%);
+    transform: translateY(-400%); 
+}
+            
+[class^="panel_"] {
+    overflow: auto;
+    position: relative;
+    width: inherit;
+    height: inherit;
+    padding: 48px;
+}
+            
+#navigation {
+    margin-left: 24px;
+}
+
+[class^="label_"] {
       display: block;
       cursor: pointer;
       margin: 8px 0;
-      width: 54px;
+      width: 120px;
       height: 40px;
       line-height: 36px;
       text-align: center;
@@ -98,118 +102,124 @@
       background-color: #fff;
       transition: all 0.3s ease;
   }
-              
-  [class^="label_"]:hover {
-      color: #444;
-      background-color: #ffeed9;
-  }
-              
-  #button_a:checked ~ #navigation .label_a,
-  #button_b:checked ~ #navigation .label_b,
-  #button_c:checked ~ #navigation .label_c,
-  #button_d:checked ~ #navigation .label_d {
-       cursor: default;
-       color: #fff;
-       background-color: #222;
-  }</style>
+            
+[class^="label_"]:hover {
+    color: #444;
+    background-color: #ffeed9;
+}
+            
+#button_a:checked ~ #navigation .label_a,
+#button_b:checked ~ #navigation .label_b,
+#button_c:checked ~ #navigation .label_c,
+#button_d:checked ~ #navigation .label_d,
+#button_e:checked ~ #navigation .label_e
+ {
+     cursor: default;
+     color: #fff;
+     background-color: #222;
+}
+</style>
 
-
-    <title>About</title>
-  </head>
-
+<title>About</title>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Capstone Project</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/demo">Demo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/team">Team</a>
-          </li>
-        </ul>
-        
-      </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Capstone Project</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/demo">Demo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/team">Team</a>
+        </li>
+      </ul>
+      
     </div>
-  </nav> 
-  <body>
-    <!-- <h1>Hello, world!</h1> -->
-    <div id="container">
+  </div>
+</nav> 
+<body>
+<div id="container">
     
     
-        <input hidden type="radio" name="carousel-control" id="button_a" checked/>
-        <input hidden type="radio" name="carousel-control" id="button_b"/>
-        <input hidden type="radio" name="carousel-control" id="button_c"/>
-        <input hidden type="radio" name="carousel-control" id="button_d"/>            
-                
-        
-        <div id="carousel">
-            <div class="p-wrapper">
-                        
-                <section class="panel_a">
-                    <!-- <h1>Basic Vertical CSS Carousel Demo</h1> -->
-                    <h2>Problem Statement</h2>
-                    <p>We are using a binary classification algorithm on chest X-rays to identify whether or not there is an abnormality, specifically if there is a lung mass. This will aid physicians in more efficiently diagnosing masses, better train radiologists, and provide interpretability and explainability to patients.</p>
-                    <p> Impact: For settings where a doctor would not have access to all the technologies of a real hospital or a research lab, such as traveling clinics/physicians on global medical trips (e.g. Doctors Without Borders) assisting in crisis settings, this application offers that in-hospital experience. It starts with the interpretability of X-ray diagnosis. This application would also help patients own or have access to the X-ray interpretations for consulting future providers when coordinating care.
-                    </p>
-                </section>
-                        
-                <section class="panel_b">
-                    <h2>What is a Mass?</h2>
-                    <p>A lung mass is an area of abnormal growth that’s more than 3 centimeters in diameter; those smaller than that are called nodules. They appear as a white spot on the X-ray and are usually cancerous though sometimes benign.</p>
-                    <img src="https://prod-images-static.radiopaedia.org/images/38321803/04291e40a66f2972c36baa6a566135_jumbo.jpeg" width="400", height="500"/>
-                </section>
-                        
-                <section class="panel_c">
-                    <h2>Model Under the Hood</h2>
-                    <p>Convolutional Neural Network (CNN): DenseNet</p>
-                    <ul>
-                        <li>Aliquam iaculis enim ut mi bibendum tincidunt.</li>
-                        <li>Nulla quis elit in lorem vulputate laoreet.</li>
-                        <li>Praesent non lacus euismod, ultricies lectus ac, vehicula arcu.</li>
-                        <li>Integer lobortis ipsum vitae velit mollis, at commodo ligula suscipit.</li>
-                    </ul>
-                    <p>Sed ut leo et mi tristique feugiat. Nunc fermentum diam mauris, in ultricies neque tincidunt dictum. Quisque ac odio dignissim, ornare enim condimentum, faucibus erat. Sed tortor turpis, imperdiet dignissim lacus eget, dignissim vehicula lorem. Mauris semper mi lacus, sit amet rutrum lacus tincidunt sed. Curabitur vel nisl eu magna placerat pretium. Curabitur malesuada sagittis tortor, eget volutpat mi pellentesque quis.</p>
-                </section>
-                        
-                <section class="panel_d">
-                    <h2>Future Steps</h2>
-                    <p>Detection of other diseases: Currently our application only detects whether or not an X-Ray contains a mass or not, but we hope to extend it to other ailments such as nodules (masses smaller than 3 cm), atelectasis (partial lung collapse), pneumonia, pneumothorax (complete lung collapse), effusion (fluid buildup on the lungs), cardiomegaly (enlarged heart, not lung related but would show up on a chest X-ray), etc.</p>
-                </section>
-                        
-            </div> <!-- // .p-wrapper -->
-        </div> <!-- // #carousel -->            
-                
-        
-        <div id="navigation">
-            <label for="button_a" class="label_a"> <span>Impact</span> </label>
-            <label for="button_b" class="label_b"> <span>Mass</span> </label>
-            <label for="button_c" class="label_c"> <span>Model</span> </label>
-            <label for="button_d" class="label_d"> <span>Future</span> </label>
-        </div> <!-- // #navigation -->               
-                
-        
-    </div> <!-- // #container -->
+    <input hidden type="radio" name="carousel-control" id="button_a" checked/>
+    <input hidden type="radio" name="carousel-control" id="button_b"/>
+    <input hidden type="radio" name="carousel-control" id="button_c"/>
+    <input hidden type="radio" name="carousel-control" id="button_d"/>            
+    <input hidden type="radio" name="carousel-control" id="button_e"/>            
+
+    
+    <div id="carousel">
+        <div class="p-wrapper">
+                    
+            <section class="panel_a">
+                <h2>Problem Statement</h2>
+                <p> Cardiomegaly may not be a disease, but it's a sign of another condition. 
+                  We built a model using machine learning which takes in a chest x-ray and predicts whether an abnormality is present. 
+                  Our goal is to assist radiologists in detecting cardiomegaly early in an interpretable way.  </p>     
+            
+                <p> Impact: Xrays Without Borders strives to assist physicians in efficiently diagnosing cardiomegaly, train radiologists, and provide interpretability to patients.
+                    For traveling clinics and global medical trips in crisis settings, this application offers an in-hospital experience. </p>
+            </section>
+                    
+            <section class="panel_b">
+                <h3>What is Cardiomegaly?</h3>
+                <p>Cardiomegaly is an enlarged heart. While not a disease, it’s usually sign of another condition, such as a heart valve problem, heart disease, a prior heart attack, or stress caused by pregnancy or certain infections.</p>
+                <img src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.15752-9/295058859_339062111774546_5275896347035660776_n.png?_nc_cat=108&ccb=1-7&_nc_sid=ae9488&_nc_ohc=SjfG2WRURYsAX_jlzze&tn=N7agiG9ZH-YkeWms&_nc_ht=scontent-sjc3-1.xx&oh=03_AVL3PtS98ZwMamChQWLcNftQqibfaT3In96Ql4FsPKA4FA&oe=630A24E8" width="400", height="500"/>
+            </section>
+                    
+                    
+            <section class="panel_c">
+                <h3>Model Under the Hood</h3>
+                <p>Convolutional Neural Network (CNN): DenseNet</p>
+                <ul>
+                    <li>Many convolutional layers, which can capture small details in X-Ray images </li>
+                    <li>Start with frozen pre-trained weights on ImageNet</li>
+                    <li>Final sigmoid layer for binary classification </li>
+                </ul>
+                <p>GradCam: </p>
+                <ul>
+                  <li>Localization map that highlights important regions in the image</li>
+                  <li>Uses last convolutional layer</li>
+                  <li>Confidence score/probability from the final layer of our binary classification model.... </li>
+              </ul>
+            </section>
+                    
+            <section class="panel_d">
+                <h2>Disclaimer</h2>
+                <p>This tool is intended for use by physicians in diagnosing cardiomegaly from an X-ray image as well as patients in having better access and ownership of their diagnoses. </p>
+                <p> It is not a replacement for a physician or a consultation with them.</p>
+                <p> We also cannot guarantee the accuracy of our website's predictions. Please consult a medical professional for medical advice.</p>
+            </section>
+
+            <section class="panel_e">
+                <h2>Future Steps</h2>
+                <p>Detection of other diseases: We hope to create a model that is generalizable to other diseases such as mass, nodules, atelectasis, pneumonia, pneumothorax, effusion, etc. </p>
+                <p> Object detection: Using computer vision to construct bounding box to highlight area of abnormality if present.</p>
+                <img src="../static/images/bbox_img.jpg" >
+              </section>
 
 
+        </div> <!-- // .p-wrapper -->
+    </div> <!-- // #carousel -->            
+            
+    <div id="navigation">
+        <label for="button_a" class="label_a"> <span>Impact</span> </label>
+        <label for="button_b" class="label_b"> <span>Cardiomegaly</span> </label>
+        <label for="button_c" class="label_c"> <span>Model</span> </label>
+        <label for="button_d" class="label_d"> <span>Disclaimer</span> </label>
+        <label for="button_e" class="label_e"> <span>Future</span> </label>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-</html>
-
+    </div> <!-- // #navigation -->               
+</div> <!-- // #container -->
