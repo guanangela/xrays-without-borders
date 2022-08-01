@@ -17,6 +17,8 @@ import matplotlib
 matplotlib.use('Agg')
 import cv2
 from keras import backend as K
+from keras.preprocessing.image import ImageDataGenerator
+import scipy
 
 # imagenet_class_index = json.load(open('imagenet_class_index.json'))
 
@@ -39,8 +41,9 @@ def weighted_loss(y_true, y_pred):
     return loss
     
 # Import our model 
-model = tf.keras.models.load_model('AJ_2_model.h5', custom_objects={'weighted_loss':                   
-weighted_loss})
+# model = tf.keras.models.load_model('AJ_2_model.h5', custom_objects={'weighted_loss':                   
+# weighted_loss})
+model = tf.keras.models.load_model('50_ep_multi_catcross_weights.h5')
 
 
 # Since we are using our model only for inference, switch to `eval` mode:
@@ -54,7 +57,7 @@ def prepare_image(img):
   return img
 
 def predict_result(img):
-  pred = model.predict(img)[0]
+  pred = np.argmax(model.predict(img)[0])
   print(pred)
   if pred[0] > 0.5:
     return 'Cardiomegaly' 
@@ -93,6 +96,20 @@ def load_image_2(image_dir):
   img_tensor = tf.expand_dims(tensor, axis=0)
 # (1, 320, 320, 3)
   #print(img_tensor)
+
+  # read images in using cv2 instead of tf.io.read_file
+  # img = cv2.imread(image_dir)
+  # res = cv2.resize(img, dsize=[320, 320], interpolation=cv2.INTER_CUBIC)
+
+  datagen = ImageDataGenerator(
+                           samplewise_center=True,
+                           samplewise_std_normalization=True,
+                           )
+
+  # Note: USING CV2, Which gives slightly diff output than the tensor. If you want to use tensor, swap res with img_tensor[0]
+  img_tensor = next(datagen.flow(np.array([img_tensor[0]]), np.array([np.array([1, 0])]), batch_size=1))[0][0]
+  img_tensor = np.array([img_tensor])
+
   return img_tensor
 
 

@@ -45,8 +45,9 @@ def weighted_loss(y_true, y_pred):
     return loss
     
 # Import our model 
-model = tf.keras.models.load_model('AJ_2_model.h5', custom_objects={'weighted_loss':                   
-weighted_loss})
+# model = tf.keras.models.load_model('AJ_2_model.h5', custom_objects={'weighted_loss':                   
+# weighted_loss})
+model = tf.keras.models.load_model('50_ep_multi_catcross_weights.h5')
 
 # helper functions: image processing 
 def prepare_image(img):
