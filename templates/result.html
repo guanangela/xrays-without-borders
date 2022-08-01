@@ -22,6 +22,7 @@
 * {box-sizing: border-box;}
 
 .img-zoom-container {
+  display:flex;
   position: relative;
   flex: 33.33%;
   padding: 5px;
@@ -31,15 +32,21 @@
   position: absolute;
   border: 1px solid #d4d4d4;
   /*set the size of the lens:*/
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 .img-zoom-result {
   border: 1px solid #d4d4d4;
   /*set the size of the result div:*/
-  width: 300px;
-  height: 300px;
+  width: 100px;
+  height: 275px;
+  display:flex;
+  position: relative;
+  flex: 33.33%;
+  padding: 5px;
+  margin-top: 0px;
+  margin-left: 20px;
 }
 
 /* img { */
@@ -136,30 +143,36 @@
 <section>
 
   <h2>Prediction: {{prediction_val}}</h2>
-  <div class="row">
+  <p>Hover over the images to Zoom </p>
+
+  <!-- <div class="row">
     <div class="column">
       <img src="{{ url_for('static', filename=saved_filename) }}" alt="Original image", style="width:250px;height:275px;" >
-    </div>
+    </div> -->
 
     <!-- Zoom in original picture -->
-    <!-- <div class="img-zoom-container">
+    <div class="img-zoom-container">
       <img id="myimage" src="{{ url_for('static', filename=saved_filename) }}" alt="Original image", style="width:250px;height:275px;" >
       <div id="myresult" class="img-zoom-result"></div>
-    </div> -->
-
+    </div>
+<!-- 
     <div class="column">
       <img src="{{ url_for('static', filename=gradcam_heatmap_1) }}" alt="GradCam image 1", style="width:400px;height:300px;" >
+    </div> -->
+
+    <!-- Zoom in GradCam heatmap -->
+    <div class="img-zoom-container">
+      <img id="myimage2" src="{{ url_for('static', filename=gradcam_heatmap_1) }}" alt="GradCam image 1", style="width:400px;height:300px;" >
+      <div id="myresult2" class="img-zoom-result"></div>
     </div>
 
-
    
-    <!-- <script>
+    <script>
       imageZoom("myimage", "myresult");
-      </script> -->
+      imageZoom("myimage2", "myresult2");
 
-    <!-- <div class="column">
-      <img src="{{ url_for('static', filename=gradcam_heatmap_2) }}" alt="GradCam image 2" >
-    </div> -->
+      </script>
+
   </div>
   <a href="https://www.mayoclinic.org/diseases-conditions/enlarged-heart/symptoms-causes/syc-20355436"> 
     <h6> Find out more about Cardiomegaly here. </h6> </a> 

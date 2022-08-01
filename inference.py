@@ -164,7 +164,7 @@ def compute_gradcam(model, image_dir, label, saved_path, layer_name='bn'):
           label_index = 1
         print(f"Generating gradcam for class {label}") 
         gradcam = grad_cam(model, pre_processed_input_2, layer_name) # changed preprocessed_input -> pre_processed_input_2
-        plt.title(f"{label}: p={predictions[0][label_index]:.3f}")
+        plt.title(f"{label}: p={predictions[0][label_index]:.5f}")
         plt.axis('off')
         # plot original image + heatmap
         original_image = tf.keras.preprocessing.image.load_img(image_dir, target_size=(320, 320))

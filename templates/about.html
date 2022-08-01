@@ -182,17 +182,16 @@ body {
                     
             <section class="panel_c">
                 <h3>Model Under the Hood</h3>
-                <p>Convolutional Neural Network (CNN): DenseNet</p>
+                <p>Convolutional Neural Network (CNN): DenseNet-121</p>
                 <ul>
-                    <li>Many convolutional layers, which can capture small details in X-Ray images </li>
+                    <li>Convolutional layers which can capture small details in X-ray images </li>
                     <li>Start with frozen pre-trained weights on ImageNet</li>
-                    <li>Final sigmoid layer for binary classification </li>
+                    <li>Final sigmoid layer for binary classification task outputs a score between 0 and 1, which represents the confidence of the respective label. </li>
                 </ul>
                 <p>GradCam: </p>
                 <ul>
                   <li>Localization map that highlights important regions in the image</li>
                   <li>Uses last convolutional layer</li>
-                  <li>Confidence score/probability from the final layer of our binary classification model.... </li>
               </ul>
             </section>
                     
