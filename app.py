@@ -51,6 +51,7 @@ def weighted_loss(y_true, y_pred):
 # Import our model 
 model = tf.keras.models.load_model('AJ_2_model.h5', custom_objects={'weighted_loss':                   
 weighted_loss})
+# model = tf.keras.models.load_model('weights_model.h5')
 
 # helper functions: image processing 
 def prepare_image(img):
@@ -59,6 +60,14 @@ def prepare_image(img):
     img = np.array(img)
     img = np.expand_dims(img, 0)
     return img
+
+def predict_result(img):
+  pred = model.predict(img)[0]
+  print(pred)
+  if pred[0] > 0.5:
+    return 'Cardiomegaly' 
+  else:
+    return 'No Finding'
 
 @app.route('/')
 def index():
@@ -118,26 +127,28 @@ def upload_file():
             # 3. Run inference.
             with open(saved_filename, 'rb') as f:
                 image_bytes = f.read()
-            # img_bytes = file.read()
+            img_bytes = file.read()
             # img = prepare_image(image_bytes)
+            img = load_image_2(saved_filename)
             # return jsonify(prediction=predict_result(img))
-            # prediction = predict_result(img)
-            # print('prediction->>>>>>>>>>>>>>>>>>>>>>>', prediction)
+            prediction = predict_result(img)
+            print(prediction)
+            return render_template("result.html", prediction_val = prediction, saved_filename = 'images/' + filename)    
 
             # for i in range(len(labels)):
                 # grad_cam_path = 'static/images/grad_cam.png' 
-            grad_cam_path_1 = 'static/images/grad_cam_1.png'
-            grad_cam_path_2 = 'static/images/grad_cam_2.png'
-            pred_prob_1 = compute_gradcam(model, saved_filename, 'Cardiomegaly', grad_cam_path_1, layer_name='bn')
-            # pred_prob_2 = compute_gradcam(model, saved_filename, 'No Finding', grad_cam_path_2, layer_name='bn')
-            if pred_prob_1 > 0.5:
-                predicted_label = 'Cardiomegaly'
-                return render_template("result.html", prediction_val = predicted_label, saved_filename = 'images/' + filename, gradcam_heatmap_1 = 'images/grad_cam_1.png') #, gradcam_heatmap_2 = 'images/grad_cam_2.png')    
+            # grad_cam_path_1 = 'static/images/grad_cam_1.png'
+            # grad_cam_path_2 = 'static/images/grad_cam_2.png'
+            # pred_prob_1 = compute_gradcam(model, saved_filename, 'Cardiomegaly', grad_cam_path_1, layer_name='bn')
+            # # pred_prob_2 = compute_gradcam(model, saved_filename, 'No Finding', grad_cam_path_2, layer_name='bn')
+            # if pred_prob_1 > 0.5:
+            #     predicted_label = 'Cardiomegaly'
+            #     return render_template("result.html", prediction_val = predicted_label, saved_filename = 'images/' + filename, gradcam_heatmap_1 = 'images/grad_cam_1.png') #, gradcam_heatmap_2 = 'images/grad_cam_2.png')    
 
-            else:
-                predicted_label = 'No Finding'
-                compute_gradcam(model, saved_filename, 'No Finding', grad_cam_path_2, layer_name='bn')
-                return render_template("result.html", prediction_val = predicted_label, saved_filename = 'images/' + filename, gradcam_heatmap_1 = 'images/grad_cam_2.png') #, gradcam_heatmap_2 = 'images/grad_cam_2.png')    
+            # else:
+            #     predicted_label = 'No Finding'
+            #     compute_gradcam(model, saved_filename, 'No Finding', grad_cam_path_2, layer_name='bn')
+                # return render_template("result.html", prediction_val = predicted_label, saved_filename = 'images/' + filename, gradcam_heatmap_1 = 'images/grad_cam_2.png') #, gradcam_heatmap_2 = 'images/grad_cam_2.png')    
         return render_template('index.html')
 
 if __name__ == '__main__':

@@ -21,7 +21,7 @@ import cv2
 
 # Make sure to pass `pretrained` as `True` to use the pretrained weights:
 # model = models.resnet18(pretrained=True)
-model = tf.keras.models.load_model('weights_model.h5')
+# model = tf.keras.models.load_model('weights_model.h5')
 
 # Since we are using our model only for inference, switch to `eval` mode:
 # model.eval()
@@ -33,13 +33,13 @@ def prepare_image(img):
   img = np.expand_dims(img, 0)
   return img
 
-def predict_result(img):
-  pred = model.predict(img)[0]
-  print(pred)
-  if pred[0] > 0.5:
-    return 'Cardiomegaly' 
-  else:
-    return 'No Finding'
+# def predict_result(img):
+#   pred = model.predict(img)[0]
+#   print(pred)
+#   if pred[0] > 0.5:
+#     return 'Cardiomegaly' 
+#   else:
+#     return 'No Finding'
 
 # def get_prediction(filename):
 # 	with open(filename, 'rb') as f:
