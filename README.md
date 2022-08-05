@@ -35,5 +35,6 @@ Then go to http://127.0.0.1:5000/ in your browser.
   * `static`: Folder containing images
   * `Procfile`: File for Flask web app
   * `Aptfile`: File for opencv-headless
+  * `training notebooks`: Contains the jupyter notebooks used to read in the data and train the models
 
 
